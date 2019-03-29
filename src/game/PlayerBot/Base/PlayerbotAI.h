@@ -428,8 +428,6 @@ class MANGOS_DLL_SPEC PlayerbotAI
 
         uint8 GetHealthPercent(const Unit& target) const;
         uint8 GetHealthPercent() const;
-        uint8 GetBaseManaPercent(const Unit& target) const;
-        uint8 GetBaseManaPercent() const;
         uint8 GetManaPercent(const Unit& target) const;
         uint8 GetManaPercent() const;
         uint8 GetRageAmount(const Unit& target) const;
@@ -562,7 +560,6 @@ class MANGOS_DLL_SPEC PlayerbotAI
         MovementOrderType GetMovementOrder() { return this->m_movementOrder; }
         void MovementReset();
         void MovementClear();
-        bool IsMoving();
 
         void SetInFront(const Unit* obj);
 
@@ -669,8 +666,6 @@ class MANGOS_DLL_SPEC PlayerbotAI
         uint32 m_collectDist;               // distance to collect objects
         bool m_inventory_full;
 
-        time_t m_TimeDoneEating;
-        time_t m_TimeDoneDrinking;
         uint32 m_CurrentlyCastingSpellId;
         //bool m_IsFollowingMaster;
 
@@ -684,6 +679,8 @@ class MANGOS_DLL_SPEC PlayerbotAI
 
         AttackerInfoList m_attackerInfo;
 
+        // Force bot to pick a neutralised unit as combat target when told so
+        bool m_ignoreNeutralizeEffect;
         bool m_targetChanged;
         CombatTargetType m_targetType;
 
